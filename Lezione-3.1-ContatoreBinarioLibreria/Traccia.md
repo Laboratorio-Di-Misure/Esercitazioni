@@ -1,0 +1,2 @@
+Si realizzi il contatore binario mediante l'uso della libreria <stm32f303xc.h> che contiene strutture che permettono di "calcolare" gli indirizzi delle periferiche
+Tale libreria è organizzata in modo da avere momorizzata ogni tipo di periferica come struct con tante variabili a 32 bit qunti sono i registri della periferica e poi tutti gli indirizzi base della periferica stessa in modo da poter scrivere RCC->AHBENR ed è come se scrivessi *p dove p ha l'indirizzo del registro AHBENR della periferica RCC (clock)
