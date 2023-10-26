@@ -1,11 +1,11 @@
 #define RCC_AHBENR 0x40021014 	/*Indirizzo base dei registri RCC pag.52 Datasheet + Offset del registro AHBENR a pag.116 del RefMan*/
-																/*L'AHBENR serve ad abilitare e disabilitare il clock sulle porte collegate ai Bus AHB3 AHB2 AHB1*/
+				/*L'AHBENR serve ad abilitare e disabilitare il clock sulle porte collegate ai Bus AHB3 AHB2 AHB1*/
 																
 #define GPIOE_MODER 0x48001000 	/*Indirizzo base dei registri della porta GPIOE pag.52 Datasheet + Offset del registro MODER a pag.143 del RefMan*/
-																/*Il MODER serve ad abilitare le varie modalita' sulle singole linee della GPIO scelta*/
+				/*Il MODER serve ad abilitare le varie modalita' sulle singole linee della GPIO scelta*/
 																
-#define GPIOE_ODR 0x48001014		/*Indirizzo base dei registri della porta GPIOE pag.52 Datasheet + Offset del registro ODR a pag.145 del RefMan*/
-																/*L'ODR (Output Data Register) serve a scrivere un valore sulle varie linee quando impostate in modalita' output*/
+#define GPIOE_ODR 0x48001014	/*Indirizzo base dei registri della porta GPIOE pag.52 Datasheet + Offset del registro ODR a pag.145 del RefMan*/
+				/*L'ODR (Output Data Register) serve a scrivere un valore sulle varie linee quando impostate in modalita' output*/
 																
 int main(){
 	unsigned int* p; /* I registri sono a 32 byte, quindi possiamo usare un unsigned int come tipo per identificarli*/
@@ -21,7 +21,7 @@ int main(){
 	buffer= (1<<16); /* Nel MODER ogni due bit rappresentano la modalita' su una linea, quindi la modalita' sulla linea 8 e' controllata dai bit 16 e 17 del MODER*/
 	*p |= buffer;    /*Poniamo il bit 16 a 1*/
 	buffer=(1<<17);		/*Poniamo il bit 17 a 0*/
-	*p &= ~buffer;    /*Negando il buffer abbiamo una stringa con tutti 1 e uno 0 solo in posizione di quello che dobbiamo abbassare, in modo che in tutte le altre posizioni ci sarà x AND 1 = x e dove voglio abbassare x AND 0 = 0*/
+	*p &= ~buffer;    /*Negando il buffer abbiamo una stringa con tutti 1 e uno 0 solo in posizione di quello che dobbiamo abbassare, in modo che in tutte le altre posizioni ci sarÃ  x AND 1 = x e dove voglio abbassare x AND 0 = 0*/
 	
 	/*Accendiamo il led sulla linea PE8*/
 	p= (unsigned int*) GPIOE_ODR;
