@@ -36,7 +36,8 @@ int main(){
 	
 	/*Per sicurezza impostiamo al valore di default la modalita' sulla linea 8, in modo da permettere al prossimo processo di trovare i valori di reset e aggiungere un layer di sicurezza*/
 	p= (unsigned int*) GPIOE_MODER;
-	buffer=(1<<16)|(1<<17);
+	buffer=(1<<16)|(1<<17); /*Ogni operazione di shift crea una stringa con un solo(in questo caso) bit alzato, mettere in OR le due stringhe vuol dire che mi troverò una stringa con entrambi i bit alti*/
+				/*Esempio: (1<<4) = 00010000 (1<<2) = 00000100 (1<<4)|(1<<2) = 00010100*/  
 	*p &= ~buffer;
 	
 	/*Abilitiamo la modalita' di input sulla linea 9 della GPIOE con la stessa logica seguita per la linea 8*/
