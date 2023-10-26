@@ -1,3 +1,4 @@
+(Apri in modalità code per una visualizzazione migliore)
 Realizzare un programma che: 
 1)Abiliti il clock alla GPIOE
 2)Abiliti la porta 8(associata al LED blu) in modalità output
