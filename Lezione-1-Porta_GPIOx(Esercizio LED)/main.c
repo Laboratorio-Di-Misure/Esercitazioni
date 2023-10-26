@@ -67,7 +67,7 @@ int main(){
 	buffer=(1<<21);
 	*p &= ~buffer;
 	
-	while(1); /*AL termine del programma e' sempre opportuno alluppare il processore non sapendo, in assenza di un SO cosa viene caricato nel PC dopo il return*/
+	while(1); /*AL termine del programma e' sempre opportuno alluppare il processore non sapendo, in assenza di un SO cosa viene caricato nel PC(Program Counter del core del microcontrollore) dopo il return*/
 	return 0;
 	
 }
