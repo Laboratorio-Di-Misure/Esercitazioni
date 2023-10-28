@@ -33,14 +33,14 @@ int main(){
 		if((*p & buffer)== buffer && on==0){  /*Verifico che il pulsante sia premuto e il led non abbia gia' cambiato stato(Se non facessi la seconda verifica rischio che ogni volta che faccio il ciclo se tengo il bottone premuto, il led commuta in continuazione)*/
 			buffer=(1<<9);
 			p =(unsigned int*)GPIOE_ODR;
-			if(((*p & buffer) == buffer)){  /*Verifico se il led è già acceso*/
-				*p &= ~buffer;				/*Allora lo spengo*/
+			if(((*p & buffer) == buffer)){  /*Se il pulsante e' premuto e il led era acceso lo spengo, altrimenti lo accendo*/
+				*p &= ~buffer;
 			}else{
-				*p |= buffer;				/*Altrimenti il contrario*/
+				*p |= buffer;
 			}
 			on=1;    /*E setto on a 1 in modo da ricordare che per quell'evento pressione del bottone ho gia' commutato il led*/
-		}else{
-			on=0;			/*Se il pulsante e' stato rilasciato setto ON a 0 in modo da ricordare che la prossima volta che trova il pulsante premuto deve accendere il led*/
+		}else if((*p & buffer)!= buffer && on==1){
+			on=0;			/*Se il led e' stato rilasciato setto ON a 0 in modo da ricordare che la prossima volta che trova il pulsante premuto deve accendere il led*/
 		}
 	}
 			
